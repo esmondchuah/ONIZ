@@ -14,11 +14,8 @@ import com.oniz.Gestures.ProtractorGestureRecognizer;
 import com.oniz.Mobs.GestureRock;
 import com.oniz.Sound.SoundManager.BGM;
 import com.oniz.Sound.SoundManager.SoundFX;
-
 import java.util.EnumMap;
 import java.util.Hashtable;
-
-import javax.xml.soap.Text;
 
 /**
  * Singleton holding all assets.
@@ -396,24 +393,6 @@ public final class AssetLoader {
         backgrounds[2] = new TextureRegion(textures.get("backgrounds"), 900, 0, 450, 800);
         sprites.put("cloudsBackground", new TextureRegion(textures.get("backgrounds"), 1350, 0, 450, 800));
         sprites.put("backgroundTint", new TextureRegion(textures.get("backgrounds"), 1800, 0, 450, 800));
-
-        /*
-        // menu icons (UNUSED FOR NOW)
-        textures.put("menuTexture", new Texture(Gdx.files.internal("data/menuIcons.png")));
-        sprites.put("pauseTitle", new TextureRegion(textures.get("menuTexture"), 240, 0, 320, 100));
-        sprites.put("playUp", new TextureRegion(textures.get("menuTexture"), 240, 580, 260, 160));
-        sprites.put("playDown", new TextureRegion(textures.get("menuTexture"), 240, 740, 260, 160));
-        sprites.put("playAgainUp", new TextureRegion(textures.get("menuTexture"), 240, 260, 280, 160));
-        sprites.put("playAgainDown", new TextureRegion(textures.get("menuTexture"), 240, 420, 280, 160));
-        sprites.put("resumeUp", new TextureRegion(textures.get("menuTexture"), 0, 0, 200, 100));
-        sprites.put("resumeDown", new TextureRegion(textures.get("menuTexture"), 0, 100, 200, 100));
-        sprites.put("restartUp", new TextureRegion(textures.get("menuTexture"), 0, 200, 200, 100));
-        sprites.put("restartDown", new TextureRegion(textures.get("menuTexture"), 0, 300, 200, 100));
-        sprites.put("homeUp", new TextureRegion(textures.get("menuTexture"), 0, 400, 200, 100));
-        sprites.put("homeDown", new TextureRegion(textures.get("menuTexture"), 0, 500, 200, 100));
-        sprites.put("pauseUp", new TextureRegion(textures.get("menuTexture"), 12, 814, 72, 62));
-        sprites.put("pauseDown", new TextureRegion(textures.get("menuTexture"), 12, 894, 72, 62));
-        */
 
         //soundFXs
         soundFXs.put(SoundFX.EXPLODE1, Gdx.audio.newSound(Gdx.files.internal("sounds/explode1.ogg")));

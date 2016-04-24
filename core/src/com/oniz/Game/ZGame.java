@@ -7,7 +7,6 @@ import com.oniz.Network.LoginListener;
 import com.oniz.Network.PlayEventListener;
 import com.oniz.Network.PlayServices;
 import com.oniz.Screens.GameScreen;
-import com.oniz.Screens.MainScreen;
 import com.oniz.Screens.MatchMakingScreen;
 import com.oniz.Screens.StartScreen;
 import com.oniz.Screens.SplashScreen;

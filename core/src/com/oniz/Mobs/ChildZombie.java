@@ -74,6 +74,11 @@ public class ChildZombie {
         return position.y;
     }
 
+    // for testing purposes
+    public void setY(float y) {
+        position.y = y;
+    }
+
     public float getWidth() {
         return width;
     }
@@ -84,6 +89,11 @@ public class ChildZombie {
 
     public boolean isAlive() {
         return isAlive;
+    }
+
+    // for testing purposes
+    public void setAlive(boolean isAlive) {
+        this.isAlive = isAlive;
     }
 
     public boolean isExploding() {
