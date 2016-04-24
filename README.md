@@ -2,7 +2,7 @@
 
 A fast-paced zombie survival game.
 
-<img src="images/image03.png?raw=true" alt="Start Screen" style="width: 200px;"/>
+![Start Screen](images/image03.png?raw=true)
 ![Matchmaking Screen](images/image04.png?raw=true)
 ![Gameplay Screen](images/image06.png?raw=true)
 ![Background Config Screen](images/image09.png?raw=true)
