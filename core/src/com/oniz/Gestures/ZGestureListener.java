@@ -1,14 +1,10 @@
 package com.oniz.Gestures;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.oniz.Game.GameRenderer;
 import com.oniz.Game.GameWorld;
-import com.oniz.Mobs.EvilRectangle;
-
-import java.util.ArrayList;
 
 /**
  * Created by robin on 2/3/16.
@@ -29,20 +25,8 @@ public class ZGestureListener implements GestureListener {
         this.gr.getCam().unproject(tmpCoords);
         System.out.println("tmpCords" + tmpCoords.x + ":" + tmpCoords.y);
         System.out.println("xy " + x + ":" + y);
-//        for(EvilRectangle rect: gameWorld.getRectangles()) {
-//            System.out.println(rect.isAlive());
-//            if(pointInRectangle(rect, tmpCoords.x, tmpCoords.y)) {
-//                rect.setAlive(false);
-//                return true;
-//            }
-//        }
         return false;
     }
-
-    public static boolean pointInRectangle (EvilRectangle r, float x, float y) {
-        return r.x <= x && r.x + r.width >= x && r.y <= y && r.y + r.height >= y;
-    }
-
 
     @Override
     public boolean tap(float x, float y, int count, int button) {

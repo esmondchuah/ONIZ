@@ -11,7 +11,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.oniz.Game.AssetLoader;
-import com.oniz.Game.GameWorld;
 import com.oniz.Game.ZGame;
 import com.oniz.Network.LoginListener;
 import com.oniz.Sound.SoundManager;

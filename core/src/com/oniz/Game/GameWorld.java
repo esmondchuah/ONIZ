@@ -22,7 +22,6 @@ public class GameWorld implements PlayEventListener {
     public static final int GAME_READY = 0;
     public static final int GAME_RUNNING = 1;
     public static final int GAME_PAUSED = 2;
-    public static final int GAME_LEVEL_END = 3;
     public static final int GAME_OVER = 4;
     public static final int GAME_WINNER = 5;
     public static final int GAME_DISCONNECTED = 6;
@@ -71,9 +70,6 @@ public class GameWorld implements PlayEventListener {
                 updatePaused();
                 pauseBattleMusic();
                 break;
-//            case GAME_LEVEL_END:
-//                updateLevelEnd();
-//                break;
             case GAME_OVER:
                 updateGameOver();
                 stopBattleMusic();
@@ -87,9 +83,7 @@ public class GameWorld implements PlayEventListener {
         }
     }
 
-
     private void updateReady() {
-
     }
 
     private void pauseBattleMusic() {
@@ -108,7 +102,6 @@ public class GameWorld implements PlayEventListener {
 
     private void updateBattleMusic(float delta) {
         //soundManager.checkMusicPosition();
-
         if (!bgmAlreadyPlaying) {
             soundManager.playBattleMusic();
             bgmAlreadyPlaying = true;
@@ -127,7 +120,6 @@ public class GameWorld implements PlayEventListener {
                 }
             }
         }
-
     }
 
     private void updateRunning(float deltaTime) {
@@ -155,9 +147,8 @@ public class GameWorld implements PlayEventListener {
                 zombie.update(deltaTime);
             } else {
                 score += 1;
-//                Gdx.app.log("Zombie status", "killed");
+                Gdx.app.log("Zombie status", "killed");
                 iterator.remove();
-
 
                 //send zombie to other player, if multiplayer mode
                 if (zgame.isMultiplayerMode()) {
@@ -181,7 +172,7 @@ public class GameWorld implements PlayEventListener {
     }
 
     private void updateGameOver() {
-//        System.out.println("GAME OVER!!!");
+        //System.out.println("GAME OVER!!!");
     }
 
     public void setState(int state) {
@@ -191,6 +182,7 @@ public class GameWorld implements PlayEventListener {
     private void spawnZombie(boolean isEnemy) {
         ChildZombie childZombie = new ChildZombie(zombiePaths[random.nextInt(9)], -130, isEnemy);
         childZombies.add(childZombie);
+        Gdx.app.log("Spawn another zombie, current time: ", String.valueOf(System.currentTimeMillis()));
     }
 
     public void weakenZombie(GestureRock.GestureType gestureType) {
@@ -204,7 +196,6 @@ public class GameWorld implements PlayEventListener {
                 zombie.getGestureRock().decrementStage();
             }
         }
-
     }
 
     public ArrayList<ChildZombie> getChildZombies() {
@@ -279,6 +270,7 @@ public class GameWorld implements PlayEventListener {
         //we can decide what to do here
         //for starters it should spawn an additional zombie
         if (msg.startsWith("SPAWN")) {
+            Gdx.app.log("Message received, current time: ", String.valueOf(System.currentTimeMillis()));
             spawnZombie(true);
         } else if (msg.startsWith("DEFEATED") && !this.isGameOver()) {
             zgame.setOpponentDefeated(true);
@@ -286,7 +278,7 @@ public class GameWorld implements PlayEventListener {
         } else if (msg.startsWith("RESTART") && (this.state != GAME_RUNNING)) {
             this.restartGame();
         }
-//        Gdx.app.log("REALTIMEUPDATE", msg);
+        Gdx.app.log("REALTIMEUPDATE", msg);
     }
 
     @Override
@@ -303,6 +295,55 @@ public class GameWorld implements PlayEventListener {
         stopBattleMusic();
         //show splash?
         this.setState(GAME_DISCONNECTED);
+    }
+
+    /**
+     * Test Case for GameWorld
+     * Ensure successful transitions between different game states.
+     */
+    public static void main(String[] args) {
+        ArrayList<ChildZombie> childZombies = new ArrayList<ChildZombie>();
+        Random random = new Random();
+        int gameState = GAME_RUNNING;
+
+        for (int i = 0; i < 50; i++) {
+            childZombies.add(new ChildZombie(zombiePaths[random.nextInt(9)], -130, false));
+        }
+        System.out.println("Number of zombies in GameWorld: " + childZombies.size());
+
+        // simulate 3 zombies killed
+        childZombies.get(11).setAlive(false);
+        childZombies.get(22).setAlive(false);
+        childZombies.get(33).setAlive(false);
+
+        for (Iterator<ChildZombie> iterator = childZombies.iterator(); iterator.hasNext(); ) {
+            ChildZombie zombie = iterator.next();
+
+            // remove dead zombies
+            if (!zombie.isAlive()) {
+                iterator.remove();
+            }
+        }
+        if (childZombies.size() != 47) {
+            System.out.println("GameWorld TestCase FAILED!!");
+        }
+
+        // simulate zombie reaching the top of the building
+        childZombies.get(23).setY(581);
+
+        for (Iterator<ChildZombie> iterator = childZombies.iterator(); iterator.hasNext(); ) {
+            ChildZombie zombie = iterator.next();
+
+            // if one of the zombies reaches the roof
+            if (zombie.getY() > 580) {
+                gameState = GAME_OVER;
+            }
+        }
+        if (gameState != GAME_OVER) {
+            System.out.println("GameWorld TestCase FAILED!!");
+        } else {
+            System.out.println("GameWorld TestCase is successful!!");
+        }
     }
 }
 
