@@ -1,6 +1,6 @@
 # ONIZ - Oh No Its Zombies - LibGDX Multiplayer Game
 
-A fast-paced zombie survival game.
+A fast-paced zombie survival game. Available with 2 modes: single player and multiplayer.
 
 ![Start Screen](images/image03.png?raw=true)
 ![Matchmaking Screen](images/image04.png?raw=true)
