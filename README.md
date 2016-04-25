@@ -6,7 +6,7 @@ A fast-paced zombie survival game. Available with 2 modes: single player and mul
 ![Matchmaking Screen](images/image04.png?raw=true)
 ![Gameplay Screen](images/image06.png?raw=true)
 ![Background Config Screen](images/image09.png?raw=true)
-![Help Screen](images/image09.png?raw=true)
+![Help Screen](images/image18.png?raw=true)
 
 ### Android Studio Tips
 
